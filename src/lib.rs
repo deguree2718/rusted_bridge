@@ -1,20 +1,8 @@
 use devices::*;
 
 pub fn get_devices() -> Vec<DeviceInfo> {
-    let mut device_list: Vec<DeviceInfo> = Vec::new();
-    for device in Devices::get().unwrap_or_default(){
-        device_list.push(device);
-    }
-    device_list
+    Devices::get().unwrap_or_default()
 }
-
-// pub fn add(left: usize, right: usize) -> usize {
-//     left + right
-// }
-//
-// pub fn myNameIsPaul() -> String {
-//     String::from("Paul")
-// }
 
 #[cfg(test)]
 mod tests {
@@ -22,6 +10,6 @@ mod tests {
 
     #[test]
     fn find_devices() {
-        println!("{:?}", get_devices());
+        assert_ne!(Vec::<DeviceInfo>::new(), get_devices());
     }
 }
