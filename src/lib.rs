@@ -35,5 +35,4 @@ mod tests {
       }
       assert!(result);
   }
-
 }
