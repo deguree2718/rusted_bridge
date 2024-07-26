@@ -5,7 +5,7 @@ A rust lib for automatizing printing documents
 - No need for user confirmation of settings for the printer
 
 crates being used:
-- [devices - by hankjordan](https://github.com/hankjordan/devices)
+- [printers - by talesluna](https://github.com/talesluna/rust-printers)
 
 # PT-Br
 ## Ponte Enferrujada
@@ -14,4 +14,4 @@ Uma biblioteca em rust para automatizar a impressão de documentos
 - Sem a necessidade do usuário confirmar as configurações para a impressora
 
 crates sendo usadas:
-- [devices - por hankjordan](https://github.com/hankjordan/devices)
+- [printers - by talesluna](https://github.com/talesluna/rust-printers)
