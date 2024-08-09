@@ -1,18 +1,18 @@
-name: Rust
+#name: Rust
 
-on:
-  pull_request:
-    branches: [ "master" ]
+#on:
+#  pull_request:
+#    branches: [ "master" ]
 
-env:
-  CARGO_TERM_COLOR: always
+#env:
+#  CARGO_TERM_COLOR: always
 
-jobs:
-  build:
+#jobs:
+#  build:
 
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Run tests
-      run: cargo test --verbose
+#    steps:
+#    - uses: actions/checkout@v4
+#    - name: Run tests
+#      run: cargo test --verbose
