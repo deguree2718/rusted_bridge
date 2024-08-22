@@ -1,7 +1,7 @@
-// use std::{
-// 	// path::Path,
+use std::{
+	path::Path
 // 	// process::Command
-// };
+};
 //use wasm_bindgen::prelude::wasm_bindgen;
 // use pdfium_render::prelude::*;
 // use printers;
@@ -15,14 +15,14 @@ pub fn get_printers() -> Vec<Printer> {
   //   }
   // }
   for printer in printers::get_printers() {
-    // if printer.name != "Fax" && !printer.name.contains("Microsoft") {
+    if printer.name != "Fax" && !printer.name.contains("Microsoft") {
       printer_list.push(printer);
-    // }
+    }
   }
   printer_list
 }
 
-// 
-// pub fn print() {
-// 	
-// }
+
+pub fn print(p_printer: &Printer, file: &Path) {
+	p_printer.print_file(file.to_str().expect("couldn't parse"), None).expect("couldn't print");
+}
