@@ -7,6 +7,11 @@ A rust lib for automatizing printing documents
 crates being used:
 - [printers - by talesluna](https://github.com/talesluna/rust-printers)
 
+crates being reviewed for use
+- [ipp.rs - by Dmitry Pankratov](https://crates.io/crates/ipp)
+- [rsspy - by Rustin](https://crates.io/crates/rsspy)
+- [cups-sys - by Christian Legnitto](https://crates.io/crates/cups-sys)
+
 # PT-Br
 ## Ponte Enferrujada
 Uma biblioteca em rust para automatizar a impressão de documentos
@@ -15,3 +20,8 @@ Uma biblioteca em rust para automatizar a impressão de documentos
 
 crates sendo usadas:
 - [printers - by talesluna](https://github.com/talesluna/rust-printers)
+
+crates em revisão para uso
+- [ipp.rs - by Dmitry Pankratov](https://crates.io/crates/ipp)
+- [rsspy - by Rustin](https://crates.io/crates/rsspy)
+- [cups-sys - by Christian Legnitto](https://crates.io/crates/cups-sys)
