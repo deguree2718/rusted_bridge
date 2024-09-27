@@ -8,6 +8,6 @@ fn find_devices() {
   println!("{:?}", device_list);
   for printer in device_list {
     // let file = read(Path::new("C:\\Users\\paulo\\Downloads\\teste1.pdf")).unwrap();
-    let result = print_file(printer);
+    // let result = print_file(printer);
    }
 }
