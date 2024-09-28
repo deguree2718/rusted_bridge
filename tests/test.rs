@@ -7,7 +7,9 @@ fn find_devices() {
   let device_list = get_printers();
   println!("{:?}", device_list);
   for printer in device_list {
+  	println!("{}", printer);
     // let file = read(Path::new("C:\\Users\\paulo\\Downloads\\teste1.pdf")).unwrap();
-    // let result = print_file(printer);
+     let result = crate::print_file(printer);
+	break;
    }
 }
