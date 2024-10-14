@@ -718,6 +718,7 @@ version = "0.0.1"
 dependencies = [
  "devices",
  "ipp",
+ "js-sys",
  "printers",
  "wasm-bindgen",
  "web-sys",
