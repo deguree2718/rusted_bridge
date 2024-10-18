@@ -1,5 +1,5 @@
 use std::{fs::{File}, env};
-use wasm_bindgen::prelude::wasm_bindgen;
+use wasm_bindgen::prelude::*;
 use ipp::prelude::*;
 
 #[cfg(feature = "wee_alloc")]
