@@ -1,20 +1,19 @@
 use std::{fs::{File}, env};
-use wasm_bindgen::prelude::*;
 use ipp::prelude::*;
 
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
-#[wasm_bindgen]
+//#[wasm_bindgen]
 pub fn get_printers() -> Vec<String> {
-  let printer_list = Vec::new();
+  let mut printer_list = Vec::new();
   // printer_name.starts_with("ZTC") add to the array
   // printer_name.starts_with("file://") don't add to the array
   printer_list
 }
 
-#[wasm_bindgen]
+//#[wasm_bindgen]
 #[cfg(target_os = "linux")]
 pub fn print_file(printer_name: String) -> bool { // , file_path: String) {
   let payload = IppPayload::new(File::open("/home/dev/Downloads/declaracao_horas.pdf").unwrap());
@@ -41,7 +40,7 @@ pub fn print_file(printer_name: String) -> bool { // , file_path: String) {
   
 }
 
-#[wasm_bindgen]
+//#[wasm_bindgen]
 #[cfg(target_os = "windows")]
 pub fn print_file(printer_name: String) {
 

@@ -2,6 +2,7 @@
 name = "rusted_bridge"
 version = "0.0.2"
 edition = "2021"
+author = "Paulo Afonso Martins Grechi"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -14,11 +15,10 @@ js-sys = "0.3.70"
 version = "0.3.70"
 features = [
 	"File",
+	"Blob",
+	"ReadableStream",
 ]
 
-#cups-sys = "0.1.4"
-#pdfium-render = "0.8.20"
-#image = { version = ">= 0.24.0" }
 
 [lib]
-crate-type = ["cdylib", "rlib"]
+crate-type = ["cdylib"]
