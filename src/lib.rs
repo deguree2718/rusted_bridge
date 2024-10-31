@@ -1,38 +1,47 @@
-use std::path::Path;
-//use wasm_bindgen::prelude::wasm_bindgen;
-use pdfium_render::prelude::*;
-use printers;
-use printers::printer::Printer;
+use std::{fs::{File}, env};
+use ipp::prelude::*;
 
-pub fn get_printers() -> Vec<Printer> {
+#[cfg(feature = "wee_alloc")]
+#[global_allocator]
+static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+
+//#[wasm_bindgen]
+pub fn get_printers() -> Vec<String> {
   let mut printer_list = Vec::new();
-  // for printer in printers::get_printers() {
-  //   if printer.name.contains("Microsoft") && printer.name != "Fax" && printer.name.to_lowercase() == printer.driver_name.to_lowercase() {
-  //     printer_list.push(printer);
-  //   }
-  // }
-  for printer in printers::get_printers() {
-    if printer.name != "Fax" && !printer.name.contains("Microsoft") {
-      printer_list.push(printer);
-    }
-  }
+  // printer_name.starts_with("ZTC") add to the array
+  // printer_name.starts_with("file://") don't add to the array
   printer_list
 }
 
-#[cfg(test)]
-mod tests {
-  use std::fs;
-  use super::*;
+//#[wasm_bindgen]
+#[cfg(target_os = "linux")]
+pub fn print_file(printer_name: String) -> bool { // , file_path: String) {
+  let payload = IppPayload::new(File::open("/home/dev/Downloads/declaracao_horas.pdf").unwrap());
+  let uri: Uri = String::from("http://localhost:631/printers/".to_owned() + &printer_name).parse().unwrap();
+  let builder = IppOperationBuilder::print_job(uri.clone(), payload)
+    .user_name(env::var("USER").unwrap_or_else(|_| "noname".to_owned()))
+    .job_title("None")
+    .attribute(IppAttribute::new("document-format", IppValue::MimeMediaType(String::from("application/octet-stream"))));
 
-  #[test]
-  fn find_devices() {
-      let device_list = get_printers();
-      let mut result: bool = false;
-      for printer in device_list {
-        // let file = fs::read("C:\\Users\\paulo\\Downloads\\0dd30670-4e01-499b-8ea3-6c86882e8400.pdf");
-        // result = printer.print(file.unwrap().as_slice(), None).expect("Could not print file");
-        result = printer.print_file("C:\\Users\\paulo\\Downloads\\0dd30670-4e01-499b-8ea3-6c86882e8400.pdf", None).expect("Could not print file");
-      }
-      assert!(result);
-  }
+  let operation = builder.build();
+  let client = IppClient::new(uri);
+  let response = client.send(operation).unwrap();
+
+  println!("IPP Status code: {}", response.header().status_code());
+
+  println!("{:?}", response.attributes());
+
+  // let attrs = response
+  //    .attributes()
+  //    .groups_of(DelimiterTag::JobAttributes)
+  //    .flat_map(|g| g.attributes().values());
+
+  return response.header().status_code().is_success();
+  
+}
+
+//#[wasm_bindgen]
+#[cfg(target_os = "windows")]
+pub fn print_file(printer_name: String) {
+
 }
