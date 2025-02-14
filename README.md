@@ -34,6 +34,12 @@ The ipp.rs crate worked well for Unix systems, and wasn't tested on Windows syst
 - For printers with different data types, need to speficy the document type
 - Doesn't compile to WASI
 
+| Crate Name | Windows | Ubuntu | WASM/WASI |
+| - | - | - | - |
+| winprint  | Managed to retrieve information from printers and print documents | Not supported | Compiling errors |
+| printers | Managed to retrieve printer information, but only with the system configured for English  | Same as Windows | Not supported |
+| ipp | Since it uses CUPS, tests weren't made on Windows systems | Sending print data to printers was successful, and searching for information from registered printers was possible  | There were errors when compiling for both WASM and WASI |
+
 [//]: # (crates being reviewed for use)
 
 [//]: # (- [rsspy - by Rustin]&#40;https://crates.io/crates/rsspy&#41;)
@@ -75,6 +81,13 @@ A crate funcionou bem pra sistemas Unix, não foi testada em Windows, ela usa IP
 - Imprimi diversos documentos
 - Para impressoras com tipos de arquivo diferentes é necessário especificação
 - Não compila para WASI
+
+
+| Nome da Crate | Windows | Ubuntu | WASM/WASI |
+| - | - | - | - |
+| winprint  | Conseguiu buscar informações das impressoras e efetuar a impressão de documentos | Não suportado | Erros ao compilar |
+| printers | Conseguiu buscar informações das impressoras, porém apenas com o sistema configurado para inglês  | Mesma funcionalidade obtida em Sistemas Windows | Não suportado |
+| ipp | Por se utilizar do CUPS, não houveram testes utilizando a ipp em Sistemas Windows | O envio dos dados de impressão para as impressoras foi bem sucedido, e a busca de informações das impressoras registradas foi possível  | Houveram erros ao compilar tanto para WASM quanto para WASI |
 
 [//]: # (crates em revisão para uso)
 
