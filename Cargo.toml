@@ -1,7 +1,7 @@
 [package]
 name = "rusted_bridge"
 version = "0.0.2"
-edition = "2021"
+edition = "2024"
 author = "Paulo Afonso Martins Grechi"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -10,6 +10,7 @@ author = "Paulo Afonso Martins Grechi"
 wasm-bindgen = "0.2.92"
 ipp = "=5.0.4"
 js-sys = "0.3.70"
+cups_rs = "0.3.0"
 
 
 [dependencies.web-sys]

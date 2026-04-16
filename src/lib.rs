@@ -1,5 +1,6 @@
-use std::{fs::{File}, env};
-use ipp::prelude::*;
+//use std::{fs::{File}, env};
+//use ipp::prelude::*;
+use cups_rs::*;
 
 
 
@@ -8,15 +9,13 @@ use ipp::prelude::*;
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 //#[wasm_bindgen]
-pub fn get_printers() -> Vec<String> {
-  let mut printer_list = Vec::new();
-
-  printer_list
+pub fn get_printers() -> Vec<Destination> {
+	get_all_destinations().unwrap()
 }
 
 //#[wasm_bindgen]
-pub fn print_file(printer_name: String, file_path: String) -> bool {
-	cfg_select! {
+pub fn print_file(_printer_name: String, _file_path: String) -> bool {
+/*	cfg_select! {
 		unix => {
 			let payload = IppPayload::new(File::open(file_path).unwrap());
 			let uri: Uri = ("http://localhost:631/printers/".to_owned() + &printer_name).parse().unwrap();
@@ -36,5 +35,22 @@ pub fn print_file(printer_name: String, file_path: String) -> bool {
 		_ => {
 			false
 		}
-	}  
+	}  */
+	false
+}
+
+
+#[cfg(test)]
+mod tests{
+	use super::*;
+	
+	
+	#[test]
+	fn find_devices() { // file_path: String
+		let printers = get_all_destinations().unwrap();
+		println!("Found {} printers", printers.len());
+		for printer in printers {
+			println!("device_uri: {:?}", printer.device_uri());
+		}
+	}
 }
